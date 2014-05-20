@@ -2,7 +2,7 @@ require_relative './scraper'
 
 class AddressCollector
 
-  SEARCH_STRING_LIST = ['la','de','he','le','ru','gr','po',
+  SEARCH_STRING_LIST = ['roseville','roseville','la','de','he','le','ru','gr','po',
                         'th','es','se','re','re','te','an']
 
   attr_accessor :addresses
@@ -25,7 +25,7 @@ class AddressCollector
   end
 
   def get_all_addresses
-    for search_string in SEARCH_STRING_LIST do
+    for search_string in SEARCH_STRING_LIST[0..1] do
       # puts "There are #{addresses.size} addresses"
       # puts "#{get_addresses_for(search_string)} new addresses added"
       get_addresses_for(search_string)
