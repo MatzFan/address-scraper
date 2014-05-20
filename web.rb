@@ -1,11 +1,10 @@
 require 'sinatra'
 require_relative './scraper'
 require_relative './parser'
+require_relative './address_collector'
 
 get '/' do
-  parser = Parser.new
-  scraper = Scraper.new('roseville')
-  scraper.get_addresses
-  addresses = scraper.addresses.map { |address| parser.parse(address) }
-  "#{addresses.join('^')}"
+  addresses = AddressCollector.new.get_all_addresses
+  parsed_addresses = addresses.map { |address| Parser.new.parse(address) }
+  "#{parsed_addresses.join('^')}"
 end

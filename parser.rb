@@ -14,7 +14,3 @@ class Parser
   end
 
 end
-
-# parser = Parser.new
-# puts parser.parse("Carwenlin, 28, Le Clos de l'Arsenal, St. Mary, JERSEY, JE3 3DD")
-
