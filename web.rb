@@ -7,5 +7,5 @@ get '/' do
   scraper = Scraper.new('roseville')
   scraper.get_addresses
   addresses = scraper.addresses.map { |address| parser.parse(address) }
-  "<div>#{addresses.join('</div><div>')}</div>"
+  "#{addresses.join('^')}"
 end
