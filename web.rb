@@ -15,7 +15,7 @@ post '/addresses_for' do
   page_num = params[:page_num]
   scraper = Scraper.new(search_string)
   raw_addresses = scraper.get_addresses_on_page(page_num)
-  # parsed_addresses = raw_addresses.map { |address| Parser.new.parse(address) }
-  @addresses = raw_addresses.join('^')
+  parsed_addresses = raw_addresses.map { |address| Parser.new.parse(address) }
+  @addresses = parsed_addresses.join('^')
   slim :addresses
 end
