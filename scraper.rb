@@ -10,12 +10,6 @@ class Scraper
     @addresses = []
   end
 
-  def get_addresses
-    if num_addresses > 0
-      (0..num_addresses).step(100) { |i| get_addresses_on_page(i) }
-    end
-  end
-
   # private
   def get_addresses_on_page(page_num)
     address_block = get_source(page_num).match(/#{CLICK}">(.*)<\/select>/mu)[1]
