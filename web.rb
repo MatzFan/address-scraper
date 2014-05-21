@@ -3,6 +3,10 @@ require 'slim'
 require_relative './scraper'
 require_relative './parser'
 
+get '/'
+  'working'
+end
+
 post '/num_addresses' do
   search_string = params[:search_string]
   scraper = Scraper.new(search_string)
