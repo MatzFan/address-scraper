@@ -3,7 +3,7 @@ require 'slim'
 require_relative './scraper'
 require_relative './parser'
 
-get '/'
+get '/' do
   'working'
 end
 
