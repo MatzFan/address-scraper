@@ -1,3 +1,5 @@
+require 'shellwords'
+
 class Scraper
 
   PC_URL = "http://www.jerseypost.com/tools/postcode-address-finder/"
@@ -6,7 +8,7 @@ class Scraper
   attr_reader :addresses
 
   def initialize(search_string)
-    @search_string = search_string
+    @search_string = Shellwords.escape(search_string) # converts to Bourne-friendly string
     @addresses = []
   end
 
