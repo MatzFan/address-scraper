@@ -1,4 +1,5 @@
-require 'shellwords'
+require 'curb'
+
 
 class Scraper
 
@@ -8,7 +9,7 @@ class Scraper
   attr_reader :addresses
 
   def initialize(search_string)
-    @search_string = Shellwords.escape(search_string) # converts to Bourne-friendly string
+    @search_string = search_string
     @addresses = []
   end
 
@@ -28,8 +29,8 @@ class Scraper
   end
 
   def get_source(page_num)
-    source = `curl -s #{PC_URL} -G -d string=#{@search_string}\
-               -d search=Find+an+Address -d first=#{page_num}`
+    source = Curl.get("http://www.jerseypost.com/tools/postcode-address-finder/",
+     {string: @search_string, search: "Find+an+Address", first: page_num}).body_str
     @source = source.force_encoding(Encoding::UTF_8)
   end
 
